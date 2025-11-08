@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "AccessLens Lite",
+  "version": "1.2.0",
+  "description": "Readable, accessible pages with one click. Presets, custom combos, and tools — all on-device.",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "action": { "default_popup": "popup.html" },
+  "background": { "service_worker": "service_worker.js" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["accessibility.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  }
+}

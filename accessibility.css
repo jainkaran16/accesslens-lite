@@ -1,0 +1,95 @@
+:root {
+  --all-min-font: 16px;
+  --all-line-height: 1.6;
+  --all-letter-spacing: 0.02em;
+  --all-word-spacing: 0.04em;
+
+  --all-focus-ring: 3px solid #005fcc;
+  --all-focus-shadow: 0 0 0 3px rgba(0,95,204,0.3);
+
+  --all-ruler-height: 28px;
+  --all-focus-padding: 12px;
+
+  --all-dim-opacity: 0.15;
+
+  /* Low-vision: ideal reading width (JS may widen via clamp) */
+  --all-max-measure: 66ch;
+}
+
+/* Apply readable defaults when enabled */
+html.all-enabled body {
+  font-size: var(--all-min-font);
+  line-height: var(--all-line-height);
+  letter-spacing: var(--all-letter-spacing);
+  word-spacing: var(--all-word-spacing);
+}
+
+/* Strong keyboard focus */
+html.all-strong-focus :where(a,button,[tabindex]:not([tabindex="-1"]),input,select,textarea,.all-nav-target):focus {
+  outline: var(--all-focus-ring) !important;
+  box-shadow: var(--all-focus-shadow) !important;
+}
+
+/* Reduce motion */
+html.all-reduce-motion * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+
+/* Skip link */
+.__accesslens_skip { position: fixed; top: 8px; left: 8px; z-index: 2147483647; background: #fff; color: #000; padding: 6px 10px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.15); transform: translateY(-200%); transition: transform .2s ease; }
+.__accesslens_skip:focus { transform: translateY(0); }
+
+/* Reading ruler */
+.all-ruler { position: fixed; left: 0; right: 0; height: var(--all-ruler-height); background: rgba(255, 255, 0, 0.15); pointer-events: none; z-index: 2147483647; }
+
+/* Focus mode dimmer */
+.all-dim-overlay { position: fixed; inset: 0; pointer-events: none; background: #000; opacity: var(--all-dim-opacity); z-index: 2147483646; }
+
+/* Low-contrast link helper */
+a.all-low-contrast-underline { text-decoration: underline !important; text-underline-offset: 2px; text-decoration-thickness: 2px; }
+
+/* Legacy color-blind fallbacks (kept) */
+html.all-cb-deut { filter: saturate(80%) hue-rotate(-15deg) contrast(1.05); }
+html.all-cb-prot { filter: saturate(80%) hue-rotate( 15deg) contrast(1.05); }
+html.all-cb-trit { filter: saturate(80%) hue-rotate(180deg) contrast(1.05); }
+
+/* Non-interactive nav styling */
+.all-nav-target { scroll-margin: 12vh; }
+
+/* ===================== Low Vision bundle ===================== */
+/* Spacing + headings remain as before (safe typography tuning) */
+/* html.all-lowvision :where(p, li, dd, dt, blockquote, figcaption) { line-height: 1.5 !important; letter-spacing: 0.12em !important; word-spacing: 0.16em !important; margin-block: 0.75em 1.5em !important; }
+html.all-lowvision :where(h1, h2, h3, h4, h5, h6) { line-height: 1.25 !important; letter-spacing: 0.02em !important; word-spacing: 0.08em !important; margin-block: 0.6em 0.4em !important; text-align: left !important; }
+html.all-lowvision :where(p, li, dd, dt, blockquote) { text-align: left !important; text-justify: auto !important; } */
+
+/* We DO NOT globally clamp main/article anymore; JS targets [data-all-measure] only */
+
+/* Relax ancestor clamps when JS marks them */
+html.all-lowvision [data-all-unclamp] {
+  max-width: none !important;
+  inline-size: auto !important;
+  width: auto !important;
+  flex: 1 1 auto !important;
+  container-type: normal !important;
+}
+
+/* NEW: Fallback reading width so it isn’t skinny before JS tags the container */
+html.all-lowvision [data-all-measure] {
+  max-width: clamp(66ch, var(--all-max-measure, 80ch), 92vw) !important;
+  margin-inline: auto !important;
+}
+
+/* The reading-width clamp is injected by JS on [data-all-measure] */
+/* Multi-column & hyphen tweaks are also injected (scoped) */
+
+/* Ignore zones */
+[data-all-ignore], [data-all-ignore] * {
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  line-height: normal !important;
+  max-width: none !important;
+}
+
+/* Colour-blind Assist helpers */
+html.all-cb-sim.all-cb-noimg :is(img, video, canvas, picture) { filter: none !important; }
+html.al-always-underline a { text-decoration: underline !important; text-underline-offset: 2px; }
+html.al-visited-dash a:visited { text-decoration-style: dashed !important; }
+.all-audit-color-only { outline: 2px dashed #d00 !important; outline-offset: 2px; }

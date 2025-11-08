@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AccessLens Test Page</title>
+<style>
+/* Animated boxes for motion test */
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-50px); } }
+
+.animated-box { width: 100px; height: 100px; background: red; margin: 20px; display: inline-block; animation: spin 2s linear infinite; transition: transform 1s; }
+.bouncy-box { width: 100px; height: 100px; background: green; margin: 20px; display: inline-block; animation: bounce 1s ease-in-out infinite; }
+
+/* Text for Low Vision / Colorblind testing */
+h1, h2, p, a { font-size: 16px; }
+a { color: blue; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<h1>AccessLens Preset Test Page</h1>
+<h2>Motion Safe</h2>
+<div class="animated-box"></div>
+<div class="bouncy-box"></div>
+<p>Hover over the boxes to check transitions (Motion Safe should stop them).</p>
+
+<h2>Video Test</h2>
+<video id="testVideo" width="300" autoplay loop muted>
+  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+</video>
+<p>The video should pause if Motion Safe is applied.</p>
+
+<h2>Low Vision / Font Scale</h2>
+<p>This is some sample text to see font scaling and spacing.</p>
+
+<h2>Color-blind Simulation</h2>
+<p>Links and colors should be adjusted if color simulation is applied: <a href="#">Sample Link</a></p>
+
+</body>
+</html>

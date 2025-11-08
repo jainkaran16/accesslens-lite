@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>AccessLens Lite</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main>
+    <h1>AccessLens Lite</h1>
+
+    <div class="row">
+      <label for="preset">Preset</label>
+      <select id="preset">
+        <option value="none">Off</option>
+        <option value="low-vision">Low Vision</option>
+        <option value="color-blind">Colour-blind Assist</option>
+        <option value="motion-sensitive">Motion-Sensitive</option>
+        <option value="keyboard-only">Keyboard-only</option>
+        <option value="reading-comfort">Reading Comfort</option>
+        <option value="custom">Custom</option>
+      </select>
+      <button id="apply">Apply</button>
+      <button id="clear" class="ghost">Clear</button>
+    </div>
+
+    <details id="customBox">
+      <summary>Customize (combine toggles)</summary>
+      <div class="grid">
+        <div class="col">
+          <h4>Typography</h4>
+          <label>Min font (px) <input id="typoFont" type="number" min="12" max="28" step="1"></label>
+          <label>Line height <input id="typoLH" type="number" min="1.2" max="2.2" step="0.1"></label>
+          <label>Letter spacing (em) <input id="typoLS" type="number" min="0" max="0.1" step="0.01"></label>
+          <label>Word spacing (em) <input id="typoWS" type="number" min="0" max="0.2" step="0.01"></label>
+          <label>Max measure (ch) <input id="typoMeasure" type="number" min="50" max="120" step="2"></label>
+
+        </div>
+
+        <div class="col">
+          <h4>Motion</h4>
+          <label><input id="reduceMotion" type="checkbox"> Reduce motion (CSS)</label>
+          <label><input id="pauseMedia" type="checkbox"> Pause autoplay media</label>
+          <label><input id="disableSnap" type="checkbox"> Disable scroll-snap</label>
+          <label><input id="stopParallax" type="checkbox"> Stop parallax backgrounds</label>
+          <label><input id="pauseSVG" type="checkbox"> Pause SVG animations</label>
+          <label><input id="pauseLottie" type="checkbox"> Pause Lottie animations</label>
+          <label><input id="freezeGifs" type="checkbox"> Freeze GIFs (best-effort)</label>
+        </div>
+
+        <div class="col">
+          <h4>Keyboard</h4>
+          <label><input id="strongFocus" type="checkbox"> Strong focus ring</label>
+          <label><input id="skipToContent" type="checkbox"> Skip-to-content</label>
+          <label><input id="navigateSections" type="checkbox"> Make sections focusable</label>
+          <label><input id="patchInteractive" type="checkbox"> Patch focus on interactive</label>
+
+          <h4 style="margin-top:10px;">Reading Tools</h4>
+          <label><input id="ruler" type="checkbox"> Reading ruler</label>
+          <label>Ruler height (px) <input id="rulerH" type="number" min="16" max="80" step="2"></label>
+          <label><input id="focusMode" type="checkbox"> Focus mode (dimmer)</label>
+          <label>Focus padding (px) <input id="focusPad" type="number" min="0" max="48" step="2"></label>
+        </div>
+
+        <div class="col">
+          <h4>Contrast & Colour</h4>
+          <label><input id="underlineLinks" type="checkbox"> Underline low-contrast links</label>
+          <label>Min ratio <input id="minRatio" type="number" min="3" max="10" step="0.5"></label>
+
+          <h4 style="margin-top:10px;">Colour-blind Assist</h4>
+          <label>Simulation
+            <select id="cbSim">
+              <option value="off">Off</option>
+              <option value="deuteranopia">Deuteranopia</option>
+              <option value="protanopia">Protanopia</option>
+              <option value="tritanopia">Tritanopia</option>
+            </select>
+          </label>
+          <label>Strength (%) <input id="cbStrength" type="number" min="0" max="100" step="5"></label>
+          <label><input id="cbImages" type="checkbox"> Apply to images/media</label>
+          <label><input id="cbCues" type="checkbox"> Add redundant cues (links etc.)</label>
+          <label><input id="alwaysUnderline" type="checkbox"> Always underline links</label>
+          <label><input id="visitedDashed" type="checkbox"> Dashed underline for visited</label>
+          <label><input id="cbAudit" type="checkbox"> Audit color-only cues</label>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:8px;">
+        <button id="saveCustom">Save & Apply Custom</button>
+      </div>
+
+      <p style="font-size:11px;margin-top:6px;color:#666;">
+        Tip: use <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>↑</kbd>/<kbd>↓</kbd> to jump between headings/paragraphs when “Make sections focusable” is on.
+      </p>
+    </details>
+
+    <pre id="status"></pre>
+  </main>
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

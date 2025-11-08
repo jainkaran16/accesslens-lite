@@ -1,0 +1,120 @@
+* { box-sizing: border-box; }
+
+/* keep the popup a consistent width so extra toggles don't wrap strangely */
+:root { --popup-w: 380px; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  width: var(--popup-w);
+  min-width: var(--popup-w);
+  max-width: var(--popup-w);
+}
+
+main { width: var(--popup-w); padding: 12px; }
+h1 { font-size: 16px; margin: 0 0 10px; }
+
+/* top row: [label][select][Apply][Clear] */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+}
+
+label { font-size: 12px; color: #444; }
+select, button, input[type="number"] { font-size: 12px; padding: 6px 8px; }
+button { border: 1px solid #ccc; border-radius: 6px; background: #fff; cursor: pointer; }
+button:hover { background: #f5f5f5; }
+button.ghost { background: #fafafa; }
+
+#status {
+  margin-top: 10px;
+  font-size: 11px;
+  background: #f6f8fa;
+  border: 1px solid #e3e6ea;
+  padding: 8px;
+  border-radius: 6px;
+  color: #333;
+  max-height: 180px;
+  overflow: auto;
+}
+
+/* ---------------- Custom panel ---------------- */
+details {
+  margin-top: 10px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+/* when open, allow scrolling so bottom buttons remain visible */
+details[open] {
+  max-height: 420px;
+  overflow: auto;
+}
+
+/* clickable summary */
+details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0 0 6px;
+  list-style: none;
+}
+details > summary::-webkit-details-marker { display: none; }
+
+details .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  grid-auto-rows: min-content; /* prevents tall items from stretching neighbors */
+}
+
+/* column container to keep headings/fields tidy */
+details .col {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+details h4 {
+  margin: 8px 0 6px;
+  font-size: 12px;
+}
+
+/* make number/select inputs fill the column width */
+details label {
+  /* CHANGE: inline-flex so checkbox + long text align nicely */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+details input[type="number"],
+details select {
+  width: 100%;
+  min-width: 72px;
+  padding: 4px;
+  font-size: 12px;
+}
+
+/* compact checkboxes with long labels */
+.col label input[type="checkbox"] { transform: translateY(1px); }
+
+/* small screens: fall back to 3 columns */
+@media (max-width: 360px) {
+  details .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+kbd {
+  background: #f2f2f2;
+  border: 1px solid #ddd;
+  border-bottom-color: #ccc;
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+}
