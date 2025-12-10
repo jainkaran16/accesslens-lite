@@ -13,7 +13,6 @@ const presetSel = $("#preset");
 const customBox = $("#customBox");
 
 const fields = {
-  // Typography
   typoFont: $("#typoFont"),
   typoLH: $("#typoLH"),
   typoLS: $("#typoLS"),
@@ -21,7 +20,7 @@ const fields = {
   // NEW: Max measure (ch)
   typoMeasure: $("#typoMeasure"),
 
-  // Motion (expanded)
+  // Motion 
   reduceMotion: $("#reduceMotion"),
   pauseMedia: $("#pauseMedia"),
   disableSnap: $("#disableSnap"),

@@ -1,6 +1,5 @@
 // AccessLens Lite — Background (Chrome MV3)
 
-// Messages
 const MSG = {
   GET_STATE: "ALL.GET_STATE",
   APPLY_PRESET: "ALL.APPLY_PRESET",
@@ -11,7 +10,6 @@ const MSG = {
 
 const SKEY = "ALL_PREFS_V1";
 
-// Defaults
 const DEFAULT_PREFS = {
   preset: "none", // none | custom | low-vision | color-blind | motion-sensitive | keyboard-only | reading-comfort
   typography: { minFontSizePx: 16, lineHeight: 1.6, letterSpacingEm: 0.02, wordSpacingEm: 0.04, maxMeasureCh: 80 },
