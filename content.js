@@ -8,9 +8,8 @@ let lastPrefs = null;
 let mo = null;
 let debounceTimer = null;
 
-// -----------------------------
 // Utilities
-// -----------------------------
+
 function setVar(name, value) {
   document.documentElement.style.setProperty(name, String(value));
 }
@@ -27,9 +26,8 @@ function ensureStylesheet() {
   document.documentElement.appendChild(link);
 }
 
-// -----------------------------
 // Skip link
-// -----------------------------
+
 let skipLinkEl = null;
 
 function ensureSkipLink(enabled) {
@@ -55,9 +53,7 @@ function ensureSkipLink(enabled) {
   if (!mainTarget.id) mainTarget.id = "__all_main_content";
 }
 
-// -----------------------------
 // Reduce motion / pause media
-// -----------------------------
 let __allMotionStyle = null;
 
 function setReduceMotion(reduce, pauseMedia) {
@@ -387,9 +383,7 @@ function bindNavHotkeys(enabled) {
   }
 }
 
-// -----------------------------
 // Color-blind simulation
-// -----------------------------
 let __allCBStyle = null;
 
 function cbDisable() {
@@ -452,9 +446,7 @@ function setCBMatrix(type, strength) {
   `;
 }
 
-// -----------------------------
 // Redundant cues & contrast
-// -----------------------------
 function applyCues(cb) {
   document.documentElement.classList.toggle("al-always-underline", !!cb.alwaysUnderline);
   document.documentElement.classList.toggle("al-visited-dash", !!cb.visitedDashed);
@@ -569,7 +561,7 @@ function markReadingContainerForLowVision() {
   }
 }
 
-/* Low Vision now: only sticky-header padding + heading scroll margins; no width/column shaping */
+// Low Vision
 let __allLVStyle = null;
 
 function applyFocusNotObscured() {
@@ -624,9 +616,7 @@ function applyFocusNotObscured() {
   }, 2000);
 }
 
-// -----------------------------
 // Main application of prefs
-// -----------------------------
 function applyPrefs(p) {
   p = p || {};
   const t = p.typography || {};
