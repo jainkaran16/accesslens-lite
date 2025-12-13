@@ -12,7 +12,7 @@ Presets for **Low-Vision**, **Motion-Sensitive**, **Color-Blind**, **Keyboard-On
 - **Contrast & link clarity:** underline low-contrast links, visited differentiation.
 - **Motion controls:** pause/limit CSS animations, scroll-snap, parallax, video/audio/SVG/Lottie, reversible GIF freeze.
 - **Color-blind assist:** simulation filters (deuteranopia/protanopia/tritanopia), redundant link cues.
-- **Reading-Comfort preset:** optional light/dark/sepia theme, sans/serif stack, paragraph rhythm, ragged-right (no justify), no hyphenation, optional image softening, tame sticky bars.
+- **Reading-Comfort preset:** optional light/dark/sepia theme, paragraph rhythm, ragged-right (no justify), no hyphenation, optional image softening, tame sticky bars.
 - **Scoped & safe:** no heavy DOM rewrites; all changes are injected CSS/patches and fully reversible.
 
 ---
