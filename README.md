@@ -19,11 +19,11 @@ Presets for **Low-Vision**, **Motion-Sensitive**, **Color-Blind**, **Keyboard-On
 
 ## 🧭 Presets
 
-- **Low-Vision:** bumps type/spacing only (no layout clamping by default).
-- **Motion-Sensitive:** reduces animations, parallax, scroll-snap; pauses media (reversible).
-- **Color-Blind:** simulate deficiencies; add redundant cues.
-- **Keyboard-Only:** strong focus rings, skip link, section navigation.
-- **Reading-Comfort:** gentle theme + typography for long reads.
+- **Low-Vision:** bumps type/spacing + applies a readable max measure (ch) to the main content area, increases link-contrast strictness, and enables skip link + section navigation + focus/keyboard patches.
+- **Motion-Sensitive:** reduces animations (also disables scroll-snap), pauses autoplay media (video/audio + Lottie when present; GIF freeze is best-effort and reversible), and enables skip link + section navigation + interactive focus patching.
+- **Color-Blind:** enables simulation (default deuteranopia) + redundant link cues, and also turns on skip link + section navigation + focus/keyboard patches.
+- **Keyboard-Only:** skip link + section navigation + interactive focus patching (and it also enables reduce motion).
+- **Reading-Comfort:** typography for long reads + enables ruler + focus dimmer and turns on skip link + section navigation + focus/keyboard patches.
 - **Custom:** mix your own (all controls exposed in the popup).
 
 ---
@@ -34,14 +34,6 @@ Presets for **Low-Vision**, **Motion-Sensitive**, **Color-Blind**, **Keyboard-On
 2. Open **Chrome → Settings → Extensions**.
 3. Toggle **Developer mode** (top right).
 4. Click **Load unpacked** and select the project folder.
-
-**Files of interest**
-- `manifest.json` – MV3 manifest  
-- `service_worker.js` – presets, storage, message router  
-- `content.js` – applies styles/patches in pages  
-- `popup.html`, `popup.css`, `popup.js` – UI for presets & custom settings  
-- `accessibility.css` – base styles/tokens  
-- `test.html` – quick local sanity check
 
 ---
 
